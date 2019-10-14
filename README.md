@@ -1,2 +1,1 @@
 Social Story
-# capstone-frontend
