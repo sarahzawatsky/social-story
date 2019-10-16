@@ -20,11 +20,6 @@ const EditStory = ({ user, match, alert, history }) => {
       .catch(console.error)
   }, [])
 
-  // const handleChange = event => {
-  //   event.persist()
-  //   setStory(storyUpload => ({ storyUpload, [event.target.name]: event.target.value }))
-  // }
-
   const handleSubmit = event => {
     event.preventDefault()
     const formData = new FormData(event.target)
@@ -55,6 +50,5 @@ const EditStory = ({ user, match, alert, history }) => {
     </div>
   )
 }
-// handleChange={handleChange}
 
 export default withRouter(EditStory)

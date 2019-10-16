@@ -2,7 +2,7 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const StoryForm = ({ story, handleChange, handleSubmit }) => {
+const StoryForm = ({ story, handleSubmit }) => {
   const cancelPath = story._id ? `#/storys/${story._id}` : '#storys'
 
   return (
@@ -13,8 +13,6 @@ const StoryForm = ({ story, handleChange, handleSubmit }) => {
           type="text"
           placeholder="Chapter"
           name="chapter"
-          required onChange={handleChange}
-          value={story.chapter}
         />
       </Form.Group>
       <Form.Group controlId="narrative">
@@ -23,8 +21,6 @@ const StoryForm = ({ story, handleChange, handleSubmit }) => {
           type="text"
           placeholder="Narrative"
           name="narrative"
-          required onChange={handleChange}
-          value={story.narrative}
         />
       </Form.Group>
       <Form.Group controlId="file" encType="multipart/form-data">
@@ -33,8 +29,6 @@ const StoryForm = ({ story, handleChange, handleSubmit }) => {
           type="file"
           placeholder="Upload"
           name="file"
-          required onChange={handleChange}
-          value={story.url}
         />
       </Form.Group>
       <Button variant="primary" type="submit">Submit</Button>
