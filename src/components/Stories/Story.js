@@ -49,7 +49,7 @@ const Story = ({ user, alerts, match }) => {
       <h4>{story.chapter}</h4>
       <p>{story.narrative}</p>
       <img src={story.url}/>
-      <button onClick={destroy}>Delete Chapter</button>
+      <Button onClick={destroy}>Delete Chapter</Button>
       <Button href={`#/stories/${match.params.id}/edit`}>Edit</Button>
       <Link to="/stories">Back to all stories</Link>
     </div>

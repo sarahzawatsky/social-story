@@ -7,7 +7,7 @@ import StoryForm from './StoryForm'
 
 const EditStory = ({ user, match, alert, history }) => {
   const [storyUpload, setStory] = useState({ chapter: '', url: '', narrative: '' })
-
+  console.log(storyUpload)
   useEffect(() => {
     axios({
       method: 'GET',
@@ -20,23 +20,23 @@ const EditStory = ({ user, match, alert, history }) => {
       .catch(console.error)
   }, [])
 
-  const handleChange = event => {
-    event.persist()
-    setStory(storyUpload => ({ ...storyUpload, [event.target.name]: event.target.value }))
-  }
+  // const handleChange = event => {
+  //   event.persist()
+  //   setStory(storyUpload => ({ storyUpload, [event.target.name]: event.target.value }))
+  // }
 
   const handleSubmit = event => {
     event.preventDefault()
-    // const formData = new FormData(event.target)
-    console.log('edit story', storyUpload)
-    // console.log('form data in edit story', formData)
+    const formData = new FormData(event.target)
+    console.log(storyUpload)
+    formData.append('_id', storyUpload)
     axios({
       url: `${apiUrl}/stories/${match.params.id}`,
       method: 'PATCH',
       headers: {
         'Authorization': `Bearer ${user.token}`
       },
-      data: { storyUpload },
+      data: formData,
       contentType: false,
       processData: false
     })
@@ -49,12 +49,12 @@ const EditStory = ({ user, match, alert, history }) => {
     <div>
       <StoryForm
         story={storyUpload}
-        handleChange={handleChange}
         handleSubmit={handleSubmit}
         cancelPath={`/stories/${match.params.id}`}
       />
     </div>
   )
 }
+// handleChange={handleChange}
 
 export default withRouter(EditStory)
