@@ -6,7 +6,7 @@ import apiUrl from '../../apiConfig'
 import StoryForm from './StoryForm'
 
 const EditStory = ({ user, match, alert, history }) => {
-  const [storyUpload, setStory] = useState({ chapter: '', url: '', narrative: '' })
+  const [storyUpload, setStory] = useState({ event: '', chapter: '', url: '', narrative: '' })
   console.log(storyUpload)
   useEffect(() => {
     axios({

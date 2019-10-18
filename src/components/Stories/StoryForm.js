@@ -3,9 +3,10 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
 const StoryForm = ({ story, handleSubmit }) => {
-  const cancelPath = story._id ? `#/storys/${story._id}` : '#storys'
+  const cancelPath = story._id ? `#/stories/${story._id}` : '#stories'
 
   return (
+
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="chapter">
         <Form.Label>Chapter</Form.Label>
@@ -38,3 +39,12 @@ const StoryForm = ({ story, handleSubmit }) => {
 }
 
 export default StoryForm
+
+//   <Form.Group controlId="event">
+//     <Form.Label>Title</Form.Label>
+//     <Form.Control
+//       type="text"
+//       placeholder="Story"
+//       name="event"
+//     />
+//   </Form.Group>

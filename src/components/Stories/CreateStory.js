@@ -25,8 +25,8 @@ const CreateStory = ({ user }) => {
       processData: false
     })
       .then(responseData => setCreated(responseData.data.storyUpload._id))
-      .then(() => alert({ heading: 'Success', message: 'Chapter has been created', variant: 'success' }))
-      .catch(() => alert({ heading: 'Your chapter was not created.', message: 'Something went wrong!', variant: 'danger' }))
+      // .then(() => alert({ heading: 'Success', message: 'Chapter has been created', variant: 'success' }))
+      // .catch(() => alert({ heading: 'Your chapter was not created.', message: 'Something went wrong!', variant: 'danger' }))
       .catch(console.error)
   }
 
@@ -39,7 +39,7 @@ const CreateStory = ({ user }) => {
       <StoryForm
         story={created}
         handleSubmit={handleSubmit}
-        cancelPath="/"
+        cancelPath="#stories"
       />
     </div>
   )
