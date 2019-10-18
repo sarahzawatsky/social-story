@@ -20,7 +20,7 @@ const Stories = ({ user, alerts }) => {
 
   const storiesJsx = stories.map(story => (
     <p key={story._id}>
-      <Link to={`/stories/${story._id}`}>Story: {story.chapter}</Link>
+      <Link to={`/stories/${story._id}`}>{story.chapter}</Link>
     </p>
   ))
 
