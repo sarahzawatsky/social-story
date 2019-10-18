@@ -20,7 +20,7 @@ Frontend Repo:
 https://github.com/sarahzawatsky/social-story
 
 Frontend Site:
-https://sarahzawatsky.github.io/social-story/#/
+https://sarahzawatsky.github.io/social-story/
 
 # Technologies Used
 - Javascript
