@@ -2,10 +2,11 @@ import React from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-const StoryForm = ({ story, handleChange, handleSubmit }) => {
-  const cancelPath = story._id ? `#/storys/${story._id}` : '#storys'
+const StoryForm = ({ story, handleSubmit }) => {
+  const cancelPath = story._id ? `#/stories/${story._id}` : '#stories'
 
   return (
+
     <Form onSubmit={handleSubmit}>
       <Form.Group controlId="chapter">
         <Form.Label>Chapter</Form.Label>
@@ -13,8 +14,6 @@ const StoryForm = ({ story, handleChange, handleSubmit }) => {
           type="text"
           placeholder="Chapter"
           name="chapter"
-          required onChange={handleChange}
-          value={story.chapter}
         />
       </Form.Group>
       <Form.Group controlId="narrative">
@@ -23,8 +22,6 @@ const StoryForm = ({ story, handleChange, handleSubmit }) => {
           type="text"
           placeholder="Narrative"
           name="narrative"
-          required onChange={handleChange}
-          value={story.narrative}
         />
       </Form.Group>
       <Form.Group controlId="file" encType="multipart/form-data">
@@ -33,8 +30,6 @@ const StoryForm = ({ story, handleChange, handleSubmit }) => {
           type="file"
           placeholder="Upload"
           name="file"
-          required onChange={handleChange}
-          value={story.url}
         />
       </Form.Group>
       <Button variant="primary" type="submit">Submit</Button>
@@ -44,3 +39,12 @@ const StoryForm = ({ story, handleChange, handleSubmit }) => {
 }
 
 export default StoryForm
+
+//   <Form.Group controlId="event">
+//     <Form.Label>Title</Form.Label>
+//     <Form.Control
+//       type="text"
+//       placeholder="Story"
+//       name="event"
+//     />
+//   </Form.Group>

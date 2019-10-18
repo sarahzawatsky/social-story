@@ -6,7 +6,7 @@ import apiUrl from '../../apiConfig'
 import StoryForm from './StoryForm'
 
 const EditStory = ({ user, match, alert, history }) => {
-  const [storyUpload, setStory] = useState({ chapter: '', url: '', narrative: '' })
+  const [storyUpload, setStory] = useState({ event: '', chapter: '', url: '', narrative: '' })
   console.log(storyUpload)
   useEffect(() => {
     axios({
@@ -19,11 +19,6 @@ const EditStory = ({ user, match, alert, history }) => {
       .then(responseData => setStory(responseData.data.storyUpload._id))
       .catch(console.error)
   }, [])
-
-  // const handleChange = event => {
-  //   event.persist()
-  //   setStory(storyUpload => ({ storyUpload, [event.target.name]: event.target.value }))
-  // }
 
   const handleSubmit = event => {
     event.preventDefault()
@@ -55,6 +50,5 @@ const EditStory = ({ user, match, alert, history }) => {
     </div>
   )
 }
-// handleChange={handleChange}
 
 export default withRouter(EditStory)

@@ -6,28 +6,14 @@ import apiUrl from '../../apiConfig'
 import StoryForm from './StoryForm'
 
 const CreateStory = ({ user }) => {
-  console.log(user)
-  const storyObject = {
-    _id: user._id,
-    chapter: '',
-    narrative: '',
-    url: ''
-  }
-  const [created, setCreated] = useState(false)
-  const [story, setStory] = useState(storyObject)
+  console.log('user', user)
 
-  const handleChange = event => {
-    event.persist()
-    setStory(story => ({ ...story, [event.target.name]: event.target.value }))
-  }
+  const [created, setCreated] = useState(false)
 
   const handleSubmit = event => {
     event.preventDefault()
     // ADD A LOADING GIF!!!!!
     const formData = new FormData(event.target)
-    for (const pair of formData.entries()) {
-      console.log(pair[0] + ', ' + pair[1])
-    }
     axios({
       url: `${apiUrl}/stories`,
       method: 'POST',
@@ -39,6 +25,8 @@ const CreateStory = ({ user }) => {
       processData: false
     })
       .then(responseData => setCreated(responseData.data.storyUpload._id))
+      // .then(() => alert({ heading: 'Success', message: 'Chapter has been created', variant: 'success' }))
+      // .catch(() => alert({ heading: 'Your chapter was not created.', message: 'Something went wrong!', variant: 'danger' }))
       .catch(console.error)
   }
 
@@ -49,10 +37,9 @@ const CreateStory = ({ user }) => {
   return (
     <div>
       <StoryForm
-        story={story}
-        handleChange={handleChange}
+        story={created}
         handleSubmit={handleSubmit}
-        cancelPath="/"
+        cancelPath="#stories"
       />
     </div>
   )

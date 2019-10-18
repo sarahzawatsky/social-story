@@ -20,7 +20,7 @@ const Story = ({ user, alerts, match }) => {
       .catch(console.error)
   }, [])
 
-  // AJAX request to delete story
+  // REQUEST TO DELETE
   const destroy = () => {
     console.log()
     axios({
@@ -40,6 +40,7 @@ const Story = ({ user, alerts, match }) => {
   }
 
   if (deleted) {
+    // alert({ heading: 'Deleted', message: 'Story has been deleted', variant: 'success' })
     return <Redirect to={
       { pathname: '/stories' } } />
   }
