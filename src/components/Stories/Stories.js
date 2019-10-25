@@ -18,7 +18,9 @@ const Stories = ({ user, alerts }) => {
       .catch(console.error)
   }, [])
 
-  const storiesJsx = stories.map(story => (
+  const storiesJsx = stories.filter(story => {
+    return story.owner._id === user._id
+  }).map(story => (
     <p key={story._id}>
       <Link to={`/stories/${story._id}`}>{story.chapter}</Link>
     </p>
