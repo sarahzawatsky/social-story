@@ -1,18 +1,15 @@
 import React, { useState } from 'react'
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-
 import apiUrl from '../../apiConfig'
 import StoryForm from './StoryForm'
+import messages from '../AutoDismissAlert/messages'
 
-const CreateStory = ({ user }) => {
-  console.log('user', user)
-
+const CreateStory = ({ user, alert }) => {
   const [created, setCreated] = useState(false)
 
   const handleSubmit = event => {
     event.preventDefault()
-    // ADD A LOADING GIF!!!!!
     const formData = new FormData(event.target)
     axios({
       url: `${apiUrl}/stories`,
@@ -25,8 +22,10 @@ const CreateStory = ({ user }) => {
       processData: false
     })
       .then(responseData => setCreated(responseData.data.storyUpload._id))
-      // .then(() => alert({ heading: 'Success', message: 'Chapter has been created', variant: 'success' }))
-      // .catch(() => alert({ heading: 'Your chapter was not created.', message: 'Something went wrong!', variant: 'danger' }))
+      .then(() => {
+        alert({ heading: 'Success', message: messages.createSuccess, variant: 'success' })
+      })
+      .catch(() => alert({ heading: 'Your chapter was not created.', message: messages.failure, variant: 'danger' }))
       .catch(console.error)
   }
 
