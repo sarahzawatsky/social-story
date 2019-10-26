@@ -7,7 +7,6 @@ import StoryForm from './StoryForm'
 
 const EditStory = ({ user, match, alert, history }) => {
   const [storyUpload, setStory] = useState({ event: '', chapter: '', url: '', narrative: '' })
-  console.log(storyUpload)
   useEffect(() => {
     axios({
       method: 'GET',
@@ -23,7 +22,6 @@ const EditStory = ({ user, match, alert, history }) => {
   const handleSubmit = event => {
     event.preventDefault()
     const formData = new FormData(event.target)
-    console.log(storyUpload)
     formData.append('_id', storyUpload)
     axios({
       url: `${apiUrl}/stories/${match.params.id}`,
@@ -37,7 +35,7 @@ const EditStory = ({ user, match, alert, history }) => {
     })
       .then(() => alert({ heading: 'Success', message: 'Story has been updated', variant: 'success' }))
       .then(() => history.push(`/stories/${match.params.id}`))
-      .catch(() => alert({ heading: 'Change unsuccessful.', message: 'Something went wrong!', variant: 'danger' }))
+      .catch(() => alert({ heading: 'Change unsuccessful.', message: 'Something went wrong! Did you fill out all fields?', variant: 'danger' }))
   }
 
   return (
