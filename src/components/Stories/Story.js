@@ -4,7 +4,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
-const Story = ({ user, alerts, match }) => {
+const Story = ({ user, alert, match }) => {
   const [story, setStory] = useState({})
   const [deleted, setDeleted] = useState(false)
 
@@ -22,7 +22,6 @@ const Story = ({ user, alerts, match }) => {
 
   // REQUEST TO DELETE
   const destroy = () => {
-    console.log()
     axios({
       url: `${apiUrl}/stories/${match.params.id}`,
       method: 'DELETE',
@@ -32,6 +31,10 @@ const Story = ({ user, alerts, match }) => {
       data: { story }
     })
       .then(() => setDeleted(true))
+      .then(() => {
+        alert({ heading: 'Success', message: 'Deleted!', variant: 'success' })
+      })
+      .catch(() => alert({ heading: 'Uh-oh.', message: 'Not deleted!', variant: 'danger' }))
       .catch(console.error)
   }
 

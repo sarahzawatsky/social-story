@@ -14,7 +14,18 @@ const Stories = ({ user, alerts }) => {
         'Authorization': `Token token=${user.token}`
       }
     })
-      .then(responseData => setStories(responseData.data.storyUploads))
+      .then(responseData => {
+        setStories(responseData.data.storyUploads)
+        return responseData
+      })
+      .then((responseData) => {
+        if (responseData.data.storyUploads.length === 0) {
+          alert({
+            heading: 'No stories!',
+            message: 'Make some stories!',
+            variant: 'danger' })
+        }
+      })
       .catch(console.error)
   }, [])
 
@@ -29,6 +40,7 @@ const Stories = ({ user, alerts }) => {
   return (
     <div>
       <h1>Stories</h1>
+      <p>Check out your stories or make some new ones!</p>
       {storiesJsx}
     </div>
   )
