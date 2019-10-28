@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Button from 'react-bootstrap/Button'
-import { withRouter, Link, Redirect } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import apiUrl from '../../apiConfig'
 
@@ -50,16 +50,18 @@ const Story = ({ user, alert, match }) => {
 
   return (
     <div>
-      <h4>{story.chapter}</h4>
+      <h4 className="story-title">{story.chapter}</h4>
       <p>{story.narrative}</p>
       <img src={story.url}/>
-      <Button onClick={destroy}>Delete Chapter</Button>
-      <Button href={`#/stories/${match.params.id}/edit`}>Edit</Button>
-      <Link to="/stories">Back to all stories</Link>
+      <div className="story-buttons">
+        <Button onClick={destroy}>Delete Chapter</Button>
+        {' '}
+        <Button href={`#/stories/${match.params.id}/edit`}>Edit</Button>
+        {' '}
+        <Button href={'#/stories/'}>Back to all stories</Button>
+      </div>
     </div>
   )
 }
-
-//       {story.owner.token === user.token && <Button onClick={ () => destroy(story._id) }>Delete</Button>}
 
 export default withRouter(Story)
